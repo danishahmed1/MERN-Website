@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./component/Header";
+import Home from "./component/home/Home";
+import { Box } from "@mui/material";
+import { DetailView } from "./component/detail/DetailView";
+import { CreateView } from "./component/create/CreateView";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+
+      <Box style={{ marginTop: 64 }}>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/details/:id" element={<DetailView />} />
+          <Route exact path="/create" element={<CreateView />} />
+        </Routes>
+      </Box>
+    </BrowserRouter>
   );
 }
 
